@@ -29,6 +29,7 @@ class m241225_192348_create_table_teachers extends Migration
     /**
      * {@inheritdoc}
      */
+    //comment
     public function safeDown()
     {
         $this->dropTable('{{%teachers}}');
