@@ -58,12 +58,12 @@ class Schedule extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'teacher_id' => 'Teacher ID',
-            'room_id' => 'Room ID',
-            'course_id' => 'Course ID',
-            'class_id' => 'Class ID',
-            'timepair_id' => 'Timepair ID',
-            'day_of_week' => 'Day Of Week',
+            'teacher_id' => 'Учитель',
+            'room_id' => 'Кабинет',
+            'course_id' => 'Предмет',
+            'class_id' => 'Класс',
+            'timepair_id' => 'Урок',
+            'day_of_week' => 'День недели',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];

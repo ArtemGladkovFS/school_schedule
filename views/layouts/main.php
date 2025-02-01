@@ -32,26 +32,30 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <header id="header">
     <?php
     NavBar::begin([
-        'brandLabel' => Yii::$app->name,
+        'brandLabel' => 'Лицей №43 г.Молога',
         'brandUrl' => Yii::$app->homeUrl,
-        'options' => ['class' => 'navbar-expand-md navbar-dark bg-dark fixed-top']
+        'options' => ['class' => 'navbar-expand-md navbar-dark bg-success sticky-top']
     ]);
     echo Nav::widget([
-        'options' => ['class' => 'navbar-nav'],
+        'options' => ['class' => 'navbar-nav ms-auto'], // <-- Сдвигаем вправо
         'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
+            ['label' => 'Расписание', 'url' => ['/schedule/index']],
+            ['label' => 'Предметы', 'url' => ['/courses/index']],
+            ['label' => 'Кабинеты', 'url' => ['/rooms/index']],
+            ['label' => 'Классы', 'url' => ['/classes/index']],
+            ['label' => 'Ученики', 'url' => ['/students/index']],
+            ['label' => 'Учителя', 'url' => ['/teachers/index']],
+            ['label' => 'Звонки', 'url' => ['/timepair/index']],
             Yii::$app->user->isGuest
-                ? ['label' => 'Login', 'url' => ['/site/login']]
+                ? ['label' => 'Войти', 'url' => ['/site/login'], 'options' => ['class' => 'nav-item custom-login-btn']]
                 : '<li class="nav-item">'
-                    . Html::beginForm(['/site/logout'])
-                    . Html::submitButton(
-                        'Logout (' . Yii::$app->user->identity->username . ')',
-                        ['class' => 'nav-link btn btn-link logout']
-                    )
-                    . Html::endForm()
-                    . '</li>'
+                . Html::beginForm(['/site/logout'], 'post', ['class' => 'd-flex'])
+                . Html::submitButton(
+                    'Logout (' . Yii::$app->user->identity->username . ')',
+                    ['class' => 'nav-link btn btn-link logout']
+                )
+                . Html::endForm()
+                . '</li>',
         ]
     ]);
     NavBar::end();
@@ -71,8 +75,8 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <footer id="footer" class="mt-auto py-3 bg-light">
     <div class="container">
         <div class="row text-muted">
-            <div class="col-md-6 text-center text-md-start">&copy; My Company <?= date('Y') ?></div>
-            <div class="col-md-6 text-center text-md-end"><?= Yii::powered() ?></div>
+            <div class="col-md-6 text-center text-md-start">Git: ArtemGladkovFS</div>
+
         </div>
     </div>
 </footer>

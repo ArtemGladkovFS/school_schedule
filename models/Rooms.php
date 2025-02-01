@@ -45,8 +45,8 @@ class Rooms extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'number' => 'Number',
-            'floor' => 'Floor',
+            'number' => 'Номер кабинета',
+            'floor' => 'Этаж',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];

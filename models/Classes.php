@@ -46,8 +46,8 @@ class Classes extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'class_name' => 'Class Name',
-            'class_level' => 'Class Level',
+            'class_name' => 'Литера класса',
+            'class_level' => 'Номер класса',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];

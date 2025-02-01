@@ -43,8 +43,8 @@ class Timepair extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'start_pair' => 'Start Pair',
-            'end_pair' => 'End Pair',
+            'start_pair' => 'Начало урока',
+            'end_pair' => 'Конец урока',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];

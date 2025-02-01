@@ -53,13 +53,13 @@ class Teachers extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'surname' => 'Surname',
-            'gender' => 'Gender',
-            'age' => 'Age',
-            'degree' => 'Degree',
-            'experience' => 'Experience',
-            'salary' => 'Salary',
+            'name' => 'Имя',
+            'surname' => 'Фамилия',
+            'gender' => 'Пол',
+            'age' => 'Возраст',
+            'degree' => 'Образование',
+            'experience' => 'Опыт',
+            'salary' => 'Зарплата',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];

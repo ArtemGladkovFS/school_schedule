@@ -51,11 +51,11 @@ class Students extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'surname' => 'Surname',
-            'gender' => 'Gender',
-            'age' => 'Age',
-            'class_id' => 'Class ID',
+            'name' => 'Имя',
+            'surname' => 'Фамилия',
+            'gender' => 'Пол',
+            'age' => 'Возраст',
+            'class_id' => 'Класс',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];

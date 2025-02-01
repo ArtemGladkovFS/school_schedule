@@ -86,3 +86,15 @@ a.desc:after {
 .form-group {
     margin-bottom: 1rem;
 }
+
+.custom-login-btn {
+    background-color: #d84b20;
+    color: #212529;
+    padding: 1px 10px;
+    border-radius: 5px;
+    border: none;
+}
+
+.custom-login-btn.nav-link {
+    color: #212529 !important;
+}

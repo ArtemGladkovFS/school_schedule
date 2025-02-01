@@ -50,9 +50,9 @@ class Courses extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'teacher_id' => 'Teacher ID',
-            'room_id' => 'Room ID',
+            'name' => 'Предмет',
+            'teacher_id' => 'Учитель',
+            'room_id' => 'Кабинет',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
