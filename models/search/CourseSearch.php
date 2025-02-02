@@ -4,12 +4,12 @@ namespace app\models\search;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Courses;
+use app\models\Course;
 
 /**
  * CoursesSearch represents the model behind the search form of `app\models\Courses`.
  */
-class CoursesSearch extends Courses
+class CourseSearch extends Course
 {
     /**
      * {@inheritdoc}
@@ -40,7 +40,7 @@ class CoursesSearch extends Courses
      */
     public function search($params)
     {
-        $query = Courses::find();
+        $query = Course::find();
 
         // add conditions that should always apply here
 

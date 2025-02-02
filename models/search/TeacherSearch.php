@@ -4,12 +4,12 @@ namespace app\models\search;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Students;
+use app\models\Teacher;
 
 /**
- * StudentsSearch represents the model behind the search form of `app\models\Students`.
+ * TeachersSearch represents the model behind the search form of `app\models\Teachers`.
  */
-class StudentsSearch extends Students
+class TeacherSearch extends Teacher
 {
     /**
      * {@inheritdoc}
@@ -17,7 +17,7 @@ class StudentsSearch extends Students
     public function rules()
     {
         return [
-            [['id', 'age', 'class_id'], 'integer'],
+            [['id', 'age', 'degree', 'experience', 'salary'], 'integer'],
             [['name', 'surname', 'gender', 'created_at', 'updated_at'], 'safe'],
         ];
     }
@@ -40,7 +40,7 @@ class StudentsSearch extends Students
      */
     public function search($params)
     {
-        $query = Students::find();
+        $query = Teacher::find();
 
         // add conditions that should always apply here
 
@@ -60,7 +60,9 @@ class StudentsSearch extends Students
         $query->andFilterWhere([
             'id' => $this->id,
             'age' => $this->age,
-            'class_id' => $this->class_id,
+            'degree' => $this->degree,
+            'experience' => $this->experience,
+            'salary' => $this->salary,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);

@@ -14,11 +14,11 @@ use Yii;
  * @property string $created_at
  * @property string|null $updated_at
  *
- * @property Rooms $room
+ * @property Room $room
  * @property Schedule[] $schedules
- * @property Teachers $teacher
+ * @property Teacher $teacher
  */
-class Courses extends \yii\db\ActiveRecord
+class Course extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -38,8 +38,8 @@ class Courses extends \yii\db\ActiveRecord
             [['teacher_id', 'room_id'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['name'], 'string', 'max' => 10],
-            [['room_id'], 'exist', 'skipOnError' => true, 'targetClass' => Rooms::class, 'targetAttribute' => ['room_id' => 'id']],
-            [['teacher_id'], 'exist', 'skipOnError' => true, 'targetClass' => Teachers::class, 'targetAttribute' => ['teacher_id' => 'id']],
+            [['room_id'], 'exist', 'skipOnError' => true, 'targetClass' => Room::class, 'targetAttribute' => ['room_id' => 'id']],
+            [['teacher_id'], 'exist', 'skipOnError' => true, 'targetClass' => Teacher::class, 'targetAttribute' => ['teacher_id' => 'id']],
         ];
     }
 
@@ -65,7 +65,7 @@ class Courses extends \yii\db\ActiveRecord
      */
     public function getRoom()
     {
-        return $this->hasOne(Rooms::class, ['id' => 'room_id']);
+        return $this->hasOne(Room::class, ['id' => 'room_id']);
     }
 
     /**
@@ -85,6 +85,6 @@ class Courses extends \yii\db\ActiveRecord
      */
     public function getTeacher()
     {
-        return $this->hasOne(Teachers::class, ['id' => 'teacher_id']);
+        return $this->hasOne(Teacher::class, ['id' => 'teacher_id']);
     }
 }

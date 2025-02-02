@@ -5,25 +5,25 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "rooms".
+ * This is the model class for table "classes".
  *
  * @property int $id
- * @property int $number
- * @property int $floor
+ * @property string $class_name
+ * @property int $class_level
  * @property string $created_at
  * @property string|null $updated_at
  *
- * @property Courses[] $courses
  * @property Schedule[] $schedules
+ * @property Student[] $students
  */
-class Rooms extends \yii\db\ActiveRecord
+class Classes extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'rooms';
+        return 'classes';
     }
 
     /**
@@ -32,9 +32,10 @@ class Rooms extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['number', 'floor'], 'required'],
-            [['number', 'floor'], 'integer'],
+            [['class_name', 'class_level'], 'required'],
+            [['class_level'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
+            [['class_name'], 'string', 'max' => 10],
         ];
     }
 
@@ -45,21 +46,11 @@ class Rooms extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'number' => 'Номер кабинета',
-            'floor' => 'Этаж',
+            'class_name' => 'Литера класса',
+            'class_level' => 'Номер класса',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
-    }
-
-    /**
-     * Gets query for [[Courses]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getCourses()
-    {
-        return $this->hasMany(Courses::class, ['room_id' => 'id']);
     }
 
     /**
@@ -69,6 +60,16 @@ class Rooms extends \yii\db\ActiveRecord
      */
     public function getSchedules()
     {
-        return $this->hasMany(Schedule::class, ['room_id' => 'id']);
+        return $this->hasMany(Schedule::class, ['class_id' => 'id']);
+    }
+
+    /**
+     * Gets query for [[Students]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getStudents()
+    {
+        return $this->hasMany(Student::class, ['class_id' => 'id']);
     }
 }

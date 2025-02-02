@@ -18,9 +18,9 @@ use Yii;
  * @property string|null $updated_at
  *
  * @property Classes $class
- * @property Courses $course
- * @property Rooms $room
- * @property Teachers $teacher
+ * @property Course $course
+ * @property Room $room
+ * @property Teacher $teacher
  * @property Timepair $timepair
  */
 class Schedule extends \yii\db\ActiveRecord
@@ -44,9 +44,9 @@ class Schedule extends \yii\db\ActiveRecord
             [['created_at', 'updated_at'], 'safe'],
             [['class_id', 'course_id', 'teacher_id', 'timepair_id', 'day_of_week'], 'unique', 'targetAttribute' => ['class_id', 'course_id', 'teacher_id', 'timepair_id', 'day_of_week']],
             [['class_id'], 'exist', 'skipOnError' => true, 'targetClass' => Classes::class, 'targetAttribute' => ['class_id' => 'id']],
-            [['course_id'], 'exist', 'skipOnError' => true, 'targetClass' => Courses::class, 'targetAttribute' => ['course_id' => 'id']],
-            [['room_id'], 'exist', 'skipOnError' => true, 'targetClass' => Rooms::class, 'targetAttribute' => ['room_id' => 'id']],
-            [['teacher_id'], 'exist', 'skipOnError' => true, 'targetClass' => Teachers::class, 'targetAttribute' => ['teacher_id' => 'id']],
+            [['course_id'], 'exist', 'skipOnError' => true, 'targetClass' => Course::class, 'targetAttribute' => ['course_id' => 'id']],
+            [['room_id'], 'exist', 'skipOnError' => true, 'targetClass' => Room::class, 'targetAttribute' => ['room_id' => 'id']],
+            [['teacher_id'], 'exist', 'skipOnError' => true, 'targetClass' => Teacher::class, 'targetAttribute' => ['teacher_id' => 'id']],
             [['timepair_id'], 'exist', 'skipOnError' => true, 'targetClass' => Timepair::class, 'targetAttribute' => ['timepair_id' => 'id']],
         ];
     }
@@ -86,7 +86,7 @@ class Schedule extends \yii\db\ActiveRecord
      */
     public function getCourse()
     {
-        return $this->hasOne(Courses::class, ['id' => 'course_id']);
+        return $this->hasOne(Course::class, ['id' => 'course_id']);
     }
 
     /**
@@ -96,7 +96,7 @@ class Schedule extends \yii\db\ActiveRecord
      */
     public function getRoom()
     {
-        return $this->hasOne(Rooms::class, ['id' => 'room_id']);
+        return $this->hasOne(Room::class, ['id' => 'room_id']);
     }
 
     /**
@@ -106,7 +106,7 @@ class Schedule extends \yii\db\ActiveRecord
      */
     public function getTeacher()
     {
-        return $this->hasOne(Teachers::class, ['id' => 'teacher_id']);
+        return $this->hasOne(Teacher::class, ['id' => 'teacher_id']);
     }
 
     /**

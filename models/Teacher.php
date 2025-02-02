@@ -5,27 +5,30 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "students".
+ * This is the model class for table "teachers".
  *
  * @property int $id
  * @property string $name
  * @property string $surname
  * @property string $gender
  * @property int $age
- * @property int $class_id
+ * @property int $degree
+ * @property int $experience
+ * @property int $salary
  * @property string $created_at
  * @property string|null $updated_at
  *
- * @property Classes $class
+ * @property Course[] $courses
+ * @property Schedule[] $schedules
  */
-class Students extends \yii\db\ActiveRecord
+class Teacher extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'students';
+        return 'teachers';
     }
 
     /**
@@ -34,13 +37,12 @@ class Students extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'surname', 'gender', 'age', 'class_id'], 'required'],
+            [['name', 'surname', 'gender', 'age', 'degree', 'experience', 'salary'], 'required'],
             [['gender'], 'string'],
-            [['age', 'class_id'], 'integer'],
+            [['age', 'degree', 'experience', 'salary'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['name'], 'string', 'max' => 10],
             [['surname'], 'string', 'max' => 15],
-            [['class_id'], 'exist', 'skipOnError' => true, 'targetClass' => Classes::class, 'targetAttribute' => ['class_id' => 'id']],
         ];
     }
 
@@ -55,19 +57,31 @@ class Students extends \yii\db\ActiveRecord
             'surname' => 'Фамилия',
             'gender' => 'Пол',
             'age' => 'Возраст',
-            'class_id' => 'Класс',
+            'degree' => 'Образование',
+            'experience' => 'Опыт',
+            'salary' => 'Зарплата',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
     }
 
     /**
-     * Gets query for [[Class]].
+     * Gets query for [[Courses]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getClass()
+    public function getCourses()
     {
-        return $this->hasOne(Classes::class, ['id' => 'class_id']);
+        return $this->hasMany(Course::class, ['teacher_id' => 'id']);
+    }
+
+    /**
+     * Gets query for [[Schedules]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getSchedules()
+    {
+        return $this->hasMany(Schedule::class, ['teacher_id' => 'id']);
     }
 }

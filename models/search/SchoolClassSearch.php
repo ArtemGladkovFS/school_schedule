@@ -4,12 +4,12 @@ namespace app\models\search;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Rooms;
+use app\models\Classes;
 
 /**
- * RoomsSearch represents the model behind the search form of `app\models\Rooms`.
+ * ClassesSearch represents the model behind the search form of `app\models\Classes`.
  */
-class RoomsSearch extends Rooms
+class SchoolClassSearch extends Classes
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class RoomsSearch extends Rooms
     public function rules()
     {
         return [
-            [['id', 'number', 'floor'], 'integer'],
-            [['created_at', 'updated_at'], 'safe'],
+            [['id', 'class_level'], 'integer'],
+            [['class_name', 'created_at', 'updated_at'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class RoomsSearch extends Rooms
      */
     public function search($params)
     {
-        $query = Rooms::find();
+        $query = Classes::find();
 
         // add conditions that should always apply here
 
@@ -59,11 +59,12 @@ class RoomsSearch extends Rooms
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'number' => $this->number,
-            'floor' => $this->floor,
+            'class_level' => $this->class_level,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);
+
+        $query->andFilterWhere(['like', 'class_name', $this->class_name]);
 
         return $dataProvider;
     }

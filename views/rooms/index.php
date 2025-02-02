@@ -1,13 +1,13 @@
 <?php
 
-use app\models\Rooms;
+use app\models\Room;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 
 /** @var yii\web\View $this */
-/** @var app\models\search\RoomsSearch $searchModel */
+/** @var app\models\search\RoomSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
 $this->title = 'Rooms';
@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'updated_at',
             [
                 'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Rooms $model, $key, $index, $column) {
+                'urlCreator' => function ($action, Room $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                  }
             ],

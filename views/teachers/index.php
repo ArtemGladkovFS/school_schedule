@@ -1,13 +1,13 @@
 <?php
 
-use app\models\Teachers;
+use app\models\Teacher;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 
 /** @var yii\web\View $this */
-/** @var app\models\search\TeachersSearch $searchModel */
+/** @var app\models\search\TeacherSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
 $this->title = 'Teachers';
@@ -41,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'updated_at',
             [
                 'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Teachers $model, $key, $index, $column) {
+                'urlCreator' => function ($action, Teacher $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                  }
             ],

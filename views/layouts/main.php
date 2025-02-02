@@ -37,7 +37,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         'options' => ['class' => 'navbar-expand-md navbar-dark bg-success sticky-top']
     ]);
     echo Nav::widget([
-        'options' => ['class' => 'navbar-nav ms-auto'], // <-- Сдвигаем вправо
+        'options' => ['class' => 'navbar-nav ms-auto'],
         'items' => [
             ['label' => 'Расписание', 'url' => ['/schedule/index']],
             ['label' => 'Предметы', 'url' => ['/courses/index']],
@@ -48,7 +48,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
             ['label' => 'Звонки', 'url' => ['/timepair/index']],
             Yii::$app->user->isGuest
                 ? ['label' => 'Войти', 'url' => ['/site/login'], 'options' => ['class' => 'nav-item custom-login-btn']]
-                : '<li class="nav-item">'
+                : '<li class="nav-item custom-login-btn">'
                 . Html::beginForm(['/site/logout'], 'post', ['class' => 'd-flex'])
                 . Html::submitButton(
                     'Logout (' . Yii::$app->user->identity->username . ')',

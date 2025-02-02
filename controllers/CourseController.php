@@ -2,16 +2,16 @@
 
 namespace app\controllers;
 
-use app\models\Students;
-use app\models\search\StudentsSearch;
+use app\models\Course;
+use app\models\search\CourseSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * StudentsController implements the CRUD actions for Students model.
+ * CoursesController implements the CRUD actions for Courses model.
  */
-class StudentsController extends Controller
+class CourseController extends Controller
 {
     /**
      * @inheritDoc
@@ -32,13 +32,13 @@ class StudentsController extends Controller
     }
 
     /**
-     * Lists all Students models.
+     * Lists all Courses models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new StudentsSearch();
+        $searchModel = new CourseSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -48,7 +48,7 @@ class StudentsController extends Controller
     }
 
     /**
-     * Displays a single Students model.
+     * Displays a single Courses model.
      * @param int $id ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
@@ -61,13 +61,13 @@ class StudentsController extends Controller
     }
 
     /**
-     * Creates a new Students model.
+     * Creates a new Courses model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new Students();
+        $model = new Course();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
@@ -83,7 +83,7 @@ class StudentsController extends Controller
     }
 
     /**
-     * Updates an existing Students model.
+     * Updates an existing Courses model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return string|\yii\web\Response
@@ -103,7 +103,7 @@ class StudentsController extends Controller
     }
 
     /**
-     * Deletes an existing Students model.
+     * Deletes an existing Courses model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return \yii\web\Response
@@ -117,15 +117,15 @@ class StudentsController extends Controller
     }
 
     /**
-     * Finds the Students model based on its primary key value.
+     * Finds the Courses model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @return Students the loaded model
+     * @return Course the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Students::findOne(['id' => $id])) !== null) {
+        if (($model = Course::findOne(['id' => $id])) !== null) {
             return $model;
         }
 

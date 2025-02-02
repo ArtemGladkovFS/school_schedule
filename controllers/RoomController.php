@@ -2,16 +2,16 @@
 
 namespace app\controllers;
 
-use app\models\Teachers;
-use app\models\search\TeachersSearch;
+use app\models\Room;
+use app\models\search\RoomSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * TeachersController implements the CRUD actions for Teachers model.
+ * RoomsController implements the CRUD actions for Rooms model.
  */
-class TeachersController extends Controller
+class RoomController extends Controller
 {
     /**
      * @inheritDoc
@@ -32,13 +32,13 @@ class TeachersController extends Controller
     }
 
     /**
-     * Lists all Teachers models.
+     * Lists all Rooms models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new TeachersSearch();
+        $searchModel = new RoomSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -48,7 +48,7 @@ class TeachersController extends Controller
     }
 
     /**
-     * Displays a single Teachers model.
+     * Displays a single Rooms model.
      * @param int $id ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
@@ -61,13 +61,13 @@ class TeachersController extends Controller
     }
 
     /**
-     * Creates a new Teachers model.
+     * Creates a new Rooms model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new Teachers();
+        $model = new Room();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
@@ -83,7 +83,7 @@ class TeachersController extends Controller
     }
 
     /**
-     * Updates an existing Teachers model.
+     * Updates an existing Rooms model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return string|\yii\web\Response
@@ -103,7 +103,7 @@ class TeachersController extends Controller
     }
 
     /**
-     * Deletes an existing Teachers model.
+     * Deletes an existing Rooms model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return \yii\web\Response
@@ -117,15 +117,15 @@ class TeachersController extends Controller
     }
 
     /**
-     * Finds the Teachers model based on its primary key value.
+     * Finds the Rooms model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @return Teachers the loaded model
+     * @return Room the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Teachers::findOne(['id' => $id])) !== null) {
+        if (($model = Room::findOne(['id' => $id])) !== null) {
             return $model;
         }
 
