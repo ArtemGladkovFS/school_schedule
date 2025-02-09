@@ -95,6 +95,10 @@ a.desc:after {
     border: none;
 }
 
-.custom-login-btn.nav-link {
-    color: #212529 !important;
+.custom-login-btn:hover {
+    background-color: #e37750;
+}
+
+.custom-login-btn a {
+    color: #212529  !important;
 }

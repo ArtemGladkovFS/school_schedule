@@ -32,7 +32,6 @@ class m241240_105049_create_table_courses extends Migration
     {
         $this->dropTable('{{%courses}}');
 
-        return false;
     }
 
 }

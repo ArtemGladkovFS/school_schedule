@@ -16,7 +16,7 @@ use Yii;
  * @property Schedule[] $schedules
  * @property Student[] $students
  */
-class Classes extends \yii\db\ActiveRecord
+class SchoolClass extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}

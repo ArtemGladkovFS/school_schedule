@@ -19,7 +19,7 @@ class m241245_112524_create_table_shedule extends Migration
             'course_id' => $this->integer()->notNull(),
             'class_id' => $this->integer()->notNull(),
             'timepair_id' => $this->integer()->notNull(),
-            'day_of_week' => $this->tinyInteger(1)->notNull(),
+            'day_of_week' => $this->string()->notNull(),
             'created_at' => 'TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP',
             'updated_at' => 'TIMESTAMP NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP'
         ]);
@@ -36,7 +36,7 @@ class m241245_112524_create_table_shedule extends Migration
      */
     public function safeDown()
     {
-        $this->dropTable('{{%shedule}}');
+        $this->dropTable('{{%schedule}}');
     }
 
 }

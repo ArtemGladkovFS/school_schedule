@@ -40,11 +40,11 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         'options' => ['class' => 'navbar-nav ms-auto'],
         'items' => [
             ['label' => 'Расписание', 'url' => ['/schedule/index']],
-            ['label' => 'Предметы', 'url' => ['/courses/index']],
-            ['label' => 'Кабинеты', 'url' => ['/rooms/index']],
-            ['label' => 'Классы', 'url' => ['/classes/index']],
-            ['label' => 'Ученики', 'url' => ['/students/index']],
-            ['label' => 'Учителя', 'url' => ['/teachers/index']],
+            ['label' => 'Предметы', 'url' => ['/course/index']],
+            ['label' => 'Кабинеты', 'url' => ['/room/index']],
+            ['label' => 'Классы', 'url' => ['/school-class/index']],
+            ['label' => 'Ученики', 'url' => ['/student/index']],
+            ['label' => 'Учителя', 'url' => ['/teacher/index']],
             ['label' => 'Звонки', 'url' => ['/timepair/index']],
             Yii::$app->user->isGuest
                 ? ['label' => 'Войти', 'url' => ['/site/login'], 'options' => ['class' => 'nav-item custom-login-btn']]

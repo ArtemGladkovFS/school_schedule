@@ -47,6 +47,10 @@ class TeacherCreator
         $teacher->experience = $faker->numberBetween(1, max(1, $teacher->age - 22));
         $teacher->salary = $faker->numberBetween(40000, 150000);
         $teacher->save();
+        if (!$teacher->save()) {
+            var_dump($teacher->errors);
+            exit;
+        }
         return $teacher;
     }
 

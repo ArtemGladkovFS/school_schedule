@@ -39,7 +39,7 @@ class Teacher extends \yii\db\ActiveRecord
         return [
             [['name', 'surname', 'gender', 'age', 'degree', 'experience', 'salary'], 'required'],
             [['gender'], 'string'],
-            [['age', 'degree', 'experience', 'salary'], 'integer'],
+            [['age', 'experience', 'salary'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['name'], 'string', 'max' => 10],
             [['surname'], 'string', 'max' => 15],

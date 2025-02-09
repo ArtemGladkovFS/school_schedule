@@ -11,7 +11,7 @@ use yii\console\ExitCode;
 
 class TeacherController extends Controller
 {
-    public function actionIndex(int $count = 20)
+    public function actionIndex(int $count = 1)
     {
         $creator = new TeacherCreator($count);
         $creator->run();

@@ -14,7 +14,7 @@ class m241250_120253_create_table_students extends Migration
     {
         $this->createTable('{{%students}}', [
             'id' => $this->primaryKey(),
-            'name' => $this->string(10)->notNull(),
+            'name' => $this->string(15)->notNull(),
             'surname' => $this->string(15)->notNull(),
             'gender' => "ENUM('male', 'female') NOT NULL",
             'age' => $this->tinyInteger(2)->notNull(),
