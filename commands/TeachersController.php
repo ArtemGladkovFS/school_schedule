@@ -9,9 +9,9 @@ use yii\console\Controller;
 use yii\console\ExitCode;
 
 
-class TeacherController extends Controller
+class TeachersController extends Controller
 {
-    public function actionIndex(int $count = 1)
+    public function actionCreate(int $count = 1)
     {
         $creator = new TeacherCreator($count);
         $creator->run();
