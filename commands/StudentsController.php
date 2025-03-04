@@ -9,7 +9,7 @@ use yii\console\Controller;
 use Faker\Factory;
 use app\models\Student;
 
-class StudentController extends Controller
+class StudentsController extends Controller
 {
     public function actionCreate(int $count = 20)
     {

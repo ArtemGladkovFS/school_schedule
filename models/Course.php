@@ -37,7 +37,7 @@ class Course extends \yii\db\ActiveRecord
             [['name', 'teacher_id', 'room_id'], 'required'],
             [['teacher_id', 'room_id'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
-            [['name'], 'string', 'max' => 10],
+            [['name'], 'string', 'max' => 50],
             [['room_id'], 'exist', 'skipOnError' => true, 'targetClass' => Room::class, 'targetAttribute' => ['room_id' => 'id']],
             [['teacher_id'], 'exist', 'skipOnError' => true, 'targetClass' => Teacher::class, 'targetAttribute' => ['teacher_id' => 'id']],
         ];
