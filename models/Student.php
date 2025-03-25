@@ -16,7 +16,7 @@ use Yii;
  * @property string $created_at
  * @property string|null $updated_at
  *
- * @property Classes $class
+ * @property SchoolClass $class
  */
 class Student extends \yii\db\ActiveRecord
 {
@@ -40,7 +40,7 @@ class Student extends \yii\db\ActiveRecord
             [['created_at', 'updated_at'], 'safe'],
             [['name'], 'string', 'max' => 10],
             [['surname'], 'string', 'max' => 15],
-            [['class_id'], 'exist', 'skipOnError' => true, 'targetClass' => Classes::class, 'targetAttribute' => ['class_id' => 'id']],
+            [['class_id'], 'exist', 'skipOnError' => true, 'targetClass' => SchoolClass::class, 'targetAttribute' => ['class_id' => 'id']],
         ];
     }
 
@@ -68,6 +68,6 @@ class Student extends \yii\db\ActiveRecord
      */
     public function getClass()
     {
-        return $this->hasOne(Classes::class, ['id' => 'class_id']);
+        return $this->hasOne(SchoolClass::class, ['id' => 'class_id']);
     }
 }

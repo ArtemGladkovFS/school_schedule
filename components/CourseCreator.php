@@ -6,12 +6,7 @@ namespace app\components;
 use app\models\Course;
 use app\models\Room;
 use app\models\Teacher;
-use Faker\Factory;
-use Faker\Generator;
-use Random\RandomException;
-use Yii;
-use yii\base\BaseObject;
-use yii\db\Exception;
+
 
 class CourseCreator
 {

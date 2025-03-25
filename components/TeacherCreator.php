@@ -28,7 +28,7 @@ class TeacherCreator
     {
         echo 'Start processing teacher creator ' . PHP_EOL;
         for ($i = 0; $i < $this->count; $i++) {
-            $teacher = $this->createTeacher();
+            $this->createTeacher();
             echo '.';
         }
         echo PHP_EOL .' End processing teacher creator ' . PHP_EOL;

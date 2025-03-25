@@ -4,14 +4,12 @@
 namespace app\commands;
 
 use app\components\StudentCreator;
-use Yii;
 use yii\console\Controller;
-use Faker\Factory;
-use app\models\Student;
+use yii\console\ExitCode;
 
 class StudentsController extends Controller
 {
-    public function actionCreate(int $count = 20)
+    public function actionCreate(int $count)
     {
         $creator = new StudentCreator($count);
         $creator->run();

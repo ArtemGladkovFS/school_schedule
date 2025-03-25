@@ -6,16 +6,13 @@ namespace app\components;
 use app\models\Room;
 use Faker\Factory;
 use Faker\Generator;
-use Random\RandomException;
-use Yii;
-use yii\base\BaseObject;
 use yii\db\Exception;
 
 class RoomCreator
 {
     private int $count;
     private Generator $faker;
-    private array $usedRooms = [];
+    private array $availableNumbers = [];
 
     public function __construct(int $count = 10)
     {
@@ -26,9 +23,13 @@ class RoomCreator
     public function run(): void
     {
         echo 'Start processing room creator' . PHP_EOL;
-        for ($i = 0; $i < $this->count; $i++) {
-            $this->createRoom();
-            echo '.';
+        try {
+            for ($i = 0; $i < $this->count; $i++) {
+                $this->createRoom();
+                echo '.';
+            }
+        } catch (Exception $e) {
+            echo PHP_EOL . 'Error: ' . $e->getMessage() . PHP_EOL;
         }
         echo PHP_EOL . 'End processing room creator' . PHP_EOL;
     }
@@ -38,8 +39,7 @@ class RoomCreator
         $faker = $this->faker;
         $room = new Room();
 
-        if (!isset($this->availableNumbers)) {
-
+        if (empty($this->availableNumbers)) {
             $this->availableNumbers = range(11, 39);
             shuffle($this->availableNumbers);
         }
@@ -59,8 +59,7 @@ class RoomCreator
         }
 
         if (!$room->save()) {
-            var_dump($room->errors);
-            exit;
+            throw new Exception("Ошибка сохранения комнаты: " . json_encode($room->errors));
         }
     }
 }
